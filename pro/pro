@@ -1,0 +1,11 @@
+import os,time
+if __name__ == '__main__':
+	print('id:[%d]'%os.getpid())
+	pid = os.fork()
+	if pid == 0 :
+		print('child id :%d'% os.getpid())
+		print('子进程',pid)
+		time.sleep(3)
+	else :
+		os.wait()
+		print('father id :%d bye-bye'%os.getpid())

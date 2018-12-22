@@ -1,0 +1,11 @@
+import sys,os
+if __name__ == '__main__':
+	while True:
+		cmd = input('[mjq xxxx]#')
+		if cmd == 'quit' or cmd == 'exit':
+			sys.exit(0)
+		cmd_list = cmd.split()
+		pid = os.fork()
+		if pid == 0:
+			os.execlp(cmd_list[0],*cmd_list)
+		os.wait()
